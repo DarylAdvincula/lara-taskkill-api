@@ -25,9 +25,9 @@ class SoloTaskController extends Controller
             ->when($status !== 'all', fn ($q) => $q->where('status', $status))
             ->when($search !== '', fn ($q) => $q->whereLike('title', '%' . $search . '%'))
             ->orderBy('created_at', $order)
-            ->paginate($request->per_page ?? 15);
+            ->paginate($request->per_page ?? 10);
 
-        return response()->json(['data' => ['tasks' => $soloTasks]]);
+        return response()->json(['tasks' => $soloTasks]);
     }
 
     public function store(StoreSoloTaskRequest $request)

@@ -27,7 +27,7 @@ class ProjectTaskController extends Controller
             ->orderBy('created_at', $order)
             ->paginate($request->per_page ?? 15);
 
-        return response()->json(['data' => ['tasks' => $tasks]]);
+        return response()->json(['tasks' => $tasks]);
     }
 
     public function store(StoreProjectTaskRequest $request, Project $project)

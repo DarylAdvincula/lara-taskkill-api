@@ -21,11 +21,12 @@ class ProjectController extends Controller
 
         $projects = $request->user()
             ->projects()
+            ->withCount('tasks')
             ->when($search !== '', fn ($q) => $q->whereLike('name', '%' . $search . '%'))
             ->orderBy('created_at', $order)
             ->paginate($request->per_page ?? 15);
         
-        return response()->json(['data' => ['projects' => $projects]]);
+        return response()->json(['projects' => $projects]);
     }
 
     public function store(StoreProjectRequest $request)
