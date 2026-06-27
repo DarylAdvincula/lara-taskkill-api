@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\ProjectTaskController;
@@ -24,6 +25,8 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::middleware(['auth:sanctum', 'throttle:api'])->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    
     Route::apiResource('solo-tasks', SoloTaskController::class);
 
     Route::apiResource('projects', ProjectController::class);

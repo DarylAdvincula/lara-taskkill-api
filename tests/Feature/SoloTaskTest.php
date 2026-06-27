@@ -27,7 +27,7 @@ test('user can view their solo tasks', function () {
     $this->actingAs($user, 'sanctum')
          ->getJson('/api/solo-tasks')
          ->assertStatus(200)
-         ->assertJsonCount(5, 'data.tasks.data');
+         ->assertJsonCount(5, 'tasks.data');
 });
 
 test('user can view one of their solo tasks', function () {

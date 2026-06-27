@@ -27,7 +27,7 @@ test('user can view their project', function () {
     $this->actingAs($user, 'sanctum')
         ->getJson('/api/projects')
         ->assertStatus(200)
-        ->assertJsonCount(5, 'data.projects.data');
+        ->assertJsonCount(5, 'projects.data');
 });
 
 test('user can view one of their projects', function () {

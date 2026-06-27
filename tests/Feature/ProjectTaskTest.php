@@ -30,7 +30,7 @@ test('user can view their project tasks', function () {
     $this->actingAs($user, 'sanctum')
          ->getJson('/api/projects/' . $project->id . '/project-tasks')
          ->assertStatus(200)
-         ->assertJsonCount(5, 'data.tasks.data');
+         ->assertJsonCount(5, 'tasks.data');
 });
 
 test('user can view one of their project tasks', function () {
